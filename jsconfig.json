@@ -1,0 +1,22 @@
+{
+    "files": [],
+    "references": [
+      {
+        "path": "./jsconfig.app.json"
+      },
+      {
+        "path": "./tsconfig.app.json"
+      }
+    ],
+    
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["src/*"]
+        }
+      },
+      "exclude": ["node_modules", "dist"]
+    
+    
+  }
+  
