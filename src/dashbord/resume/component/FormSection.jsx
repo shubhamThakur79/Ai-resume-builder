@@ -80,7 +80,7 @@ const FormSection = () => {
         {activeIndex === 5 && <Skills setEnableNext={(v) => setEnableNext(v)} />}
 
         {/* {"view Download page"} */}
-        {activeIndex === 6 && <Navigate to={"/my-resume/" + resumeId + "/view"} />}
+        {/* {activeIndex === 6 && <Navigate to={"/my-resume/" + resumeId + "/view"} />} */}
         <div className="fixed bottom-2 right-1 z-40">
           <PreviewBtn />
         </div>

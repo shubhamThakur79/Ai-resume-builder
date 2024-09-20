@@ -114,7 +114,7 @@ const Experience = ({ setEnableNext }) => {
 
     return (
 
-        <div className='w-[95vw] md:w-auto'>
+        <div className='w-[95vw] md:w-auto overflow-hidden'>
             {!toggle &&
                 <div className='shadow-lg p-3 md:p-5  border-t-purple-500 border-t-4 mt-10 rounded-2xl'>
                     <h2 className='font-bold text-lg'>Professional Experience</h2>

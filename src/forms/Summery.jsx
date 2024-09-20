@@ -52,7 +52,7 @@ const Summery = ({ setEnableNext }) => {
     };
 
     return (
-        <div className='w-[95vw] md:w-auto'>
+        <div className='w-[95vw] md:w-auto ov'>
             <div className='shadow-lg p-3 w-[100%] mx-1 md:p-5 border-t-purple-500 border-t-4 mt-10 rounded-2xl'>
                 <h2 className='font-bold text-lg'>Summary</h2>
                 <h2 className='font-medium'>Add Summary for your job title</h2>

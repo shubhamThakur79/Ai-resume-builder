@@ -85,7 +85,7 @@ const Projects = ({ setEnableNext }) => {
     }, [projectList, setResumeInfo]);  // This will trigger only when the projectList changes
 
     return (
-        <div className='w-[95vw] md:w-auto'>
+        <div className='w-[95vw] overflow-hidden md:w-auto'>
             <div className='shadow-lg p-3 md:p-5 border-t-purple-500 border-t-4 mt-10 rounded-2xl'>
                 <h2 className='font-bold text-lg'>Projects</h2>
                 <h2 className='font-medium'>Add Your Project Details</h2>

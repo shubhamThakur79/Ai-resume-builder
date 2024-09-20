@@ -85,7 +85,7 @@ const Education = ({ setEnableNext }) => {
     }, []);
 
     return (
-        <div className='w-[100vw] md:w-auto'>
+        <div className='w-[100vw] md:w-auto overflow-hidden'>
             <div className='shadow-lg p-5 border-t-purple-500 border-t-4 mt-10 rounded-2xl'>
                 <h2 className='font-bold text-lg'>Education</h2>
                 <h2 className='font-medium'>Add Your Educational details</h2>

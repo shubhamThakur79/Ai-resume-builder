@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import FormSection from '../../../resume/component/FormSection';
 import ResumePreview from '../../../resume/component/ResumePreview';
 import GlobleApi from '../../../../service/GlobleApi';
-import { ResumeIdContext, ResumeInfoContext } from '../../../../context/ResumeInfoContext';
+import { ResumeIdContext, ResumeInfoContext, TogglePreview } from '../../../../context/ResumeInfoContext';
 
 const EditResume = () => {
     const { resumeId } = useParams();  // Fetch the resumeId from the URL
     const { setResumeId } = useContext(ResumeIdContext);
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+    const { isClicked, setIsClicked } = useContext(TogglePreview)
 
     useEffect(() => {
         if (resumeId) {
@@ -29,7 +30,7 @@ const EditResume = () => {
     return (
         <div className='w-full'>
             <div className={`flex justify-between mb-10 mt-3`}>
-                <div className={`md:w-1/2 w-full `}>
+                <div id="no-print" className={`md:w-1/2 w-full md:block ${isClicked ? "hidden " : "block"} `}>
                     <FormSection resumeId={resumeId} />
                 </div>
                 <div className={`md:w-1/2 w-full  md:block`}>
