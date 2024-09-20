@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../../custom/Header'
-import { Button } from "@/components/ui/Button";
+import { Button } from "../../../../components/ui/button";
 import { DownloadCloud, Loader, LoaderCircle } from 'lucide-react';
 import { BsShare } from 'react-icons/bs';
 import { BiShare } from 'react-icons/bi';

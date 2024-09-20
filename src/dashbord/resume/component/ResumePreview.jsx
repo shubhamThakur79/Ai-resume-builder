@@ -9,7 +9,7 @@ import { Back } from '../[resumeId]/edit/PreviewBtn';
 import ProjectPreview from './preview/ProjectPreview';
 import { FaShare } from 'react-icons/fa6';
 import { DownloadCloud, LoaderCircle } from 'lucide-react';
-import { Button } from "@/components/ui/Button";
+import { Button } from "../../../components/ui/button";
 import { useParams } from 'react-router-dom';
 import { RWebShare } from 'react-web-share';
 

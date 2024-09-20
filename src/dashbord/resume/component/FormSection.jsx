@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import PersonalDetails from '../../../forms/PersonalDetails'
-import { Button } from "@/components/ui/button"
+import { Button } from "../../../components/ui/button"
 import { ArrowLeft, ArrowRight, Flag, Home, LayoutGrid } from 'lucide-react'
 import Summery from '../../../forms/Summery'
 import Experience from '../../../forms/Experience'

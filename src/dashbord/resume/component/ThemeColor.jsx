@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { Button } from "@/components/ui/button"
+import { Button } from "../../../components/ui/button"
 
 
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover"
+} from "../../../components/ui/popover"
 import { LayoutGrid } from 'lucide-react'
 import { ResumeInfoContext } from '../../../context/ResumeInfoContext'
 import GlobleApi from '../../../service/GlobleApi'

@@ -5,7 +5,7 @@ import {
     BtnNumberedList, BtnRedo, BtnStrikeThrough, BtnStyles, BtnUnderline,
     BtnUndo, Editor, EditorProvider, HtmlButton, Separator, Toolbar
 } from 'react-simple-wysiwyg';
-import { Button } from "@/components/ui/button"
+import { Button } from "../../../components/ui/button"
 import { ResumeInfoContext } from '../../../context/ResumeInfoContext';
 import { toast } from 'sonner';
 import { AIChatSession } from '../../../service/AiModel';
