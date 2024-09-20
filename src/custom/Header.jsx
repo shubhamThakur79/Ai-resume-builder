@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button } from "@/components/ui/button"
+import { Button } from "../components/ui/button"
 import { Link, Navigate, Outlet, useParams } from 'react-router-dom'
 import { UserButton, useUser } from '@clerk/clerk-react'
 import { FaShare } from 'react-icons/fa6'
@@ -27,7 +27,7 @@ const { resumeId } = useParams()
             </Link>
             <div className='mx-auto md:block hidden flex justify-end w-full mr-10 relative'>
 
-<div className='flex justify-end    ml-3 '>
+<div className='flex justify-end   ml-3 '>
     {/* <h2 className='md:text-center text-center text-xl md:text-2xl font-medium mb-2'>Congrats! Your Ultimate AI generates resume is ready !</h2>
     <p className='text-gray-600 text-center'>Now you are ready to download your resume and you can share your resume Url with your friends and family</p> */}
     <div className={"flex gap-5"}>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/Textarea";
-import { Button } from "@/components/ui/Button";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/Textarea";
+import { Button } from '../components/ui/Button';
 import { Loader, LoaderCircleIcon, PlusIcon, SaveIcon } from 'lucide-react';
 import { FiDelete } from 'react-icons/fi';
 import GlobleApi from '../service/GlobleApi';

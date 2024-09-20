@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { WiStars } from 'react-icons/wi';
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea } from "../components/ui/textarea";
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
 import { LoaderCircleIcon, SaveIcon } from 'lucide-react';
 import GlobleApi from '../service/GlobleApi';

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button } from "@/components/ui/button"
+import { Button } from "../../../../components/ui/button"
 import { Backpack, DownloadCloud, Loader, LoaderCircle, View } from 'lucide-react'
 import { ResumeInfoContext, TogglePreview } from '../../../../context/ResumeInfoContext'
 import { BsBack } from 'react-icons/bs'

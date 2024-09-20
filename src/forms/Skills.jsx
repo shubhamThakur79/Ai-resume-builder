@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Input } from "@/components/ui/input";
+import { Input } from "../components/ui/input";
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import { LoaderCircleIcon, PlusIcon, SaveIcon } from 'lucide-react';

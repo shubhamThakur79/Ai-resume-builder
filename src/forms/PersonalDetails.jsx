@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
 import { LoaderCircleIcon, SaveIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import GlobleApi from '../service/GlobleApi';

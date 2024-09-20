@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Input } from "@/components/ui/input";
+import { Input } from "../components/ui/input";
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { LoaderCircleIcon, PlusIcon, SaveIcon } from 'lucide-react';
 import { FiDelete } from 'react-icons/fi';
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea } from "../components/ui/textarea";
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import GlobleApi from '../service/GlobleApi';

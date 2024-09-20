@@ -1,8 +1,8 @@
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Input } from "@/components/ui/input";
+import { Input } from "../components/ui/input";
 import { ResumeInfoContext, ToggleExperience } from '../context/ResumeInfoContext';
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { Loader, LoaderCircleIcon, PlusIcon, SaveIcon } from 'lucide-react';
 import RichTextEditor from '../dashbord/resume/component/RichTextEditor';
 import { FiDelete } from 'react-icons/fi';

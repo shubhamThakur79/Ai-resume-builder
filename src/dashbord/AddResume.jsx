@@ -8,9 +8,9 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/dialog";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import { useUser } from '@clerk/clerk-react';
 import { createNewResume } from './../service/GlobleApi'; // Import createNewResume function
 import { useNavigate } from 'react-router-dom';
