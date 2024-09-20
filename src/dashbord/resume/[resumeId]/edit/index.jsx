@@ -1,56 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import FormSection from '../../../resume/component/FormSection'
-import ResumePreview from '../../../resume/component/ResumePreview'
-import { dummyResumeApi } from '../../../../resumeDummyData/dummy'
-import { ResumeInfoContext, ToggleExperience, TogglePreview } from '../../../../context/ResumeInfoContext'
-import GlobleApi from '../../../../service/GlobleApi'
+import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import FormSection from '../../../resume/component/FormSection';
+import ResumePreview from '../../../resume/component/ResumePreview';
+import GlobleApi from '../../../../service/GlobleApi';
+import { ResumeIdContext, ResumeInfoContext } from '../../../../context/ResumeInfoContext';
 
 const EditResume = () => {
-    let { resumeId } = useParams()
-    const [resumeInfo, setResumeInfo] = useState()
-    const [isClicked, setIsClicked] = useState(false)
-    const [toggle, setToggle] = useState(false)
-    useEffect(() => {
-        setResumeInfo(dummyResumeApi)
-        GetResumeInfo()
-    }, [])
-
-    const GetResumeInfo = () => {
-        GlobleApi.GetResumeById(resumeId).then(resp => {
-            console.log(resp?.data?.data)
-            setResumeInfo(resp?.data?.data?.attributes)
-        })
-    }
-    useEffect(() => {
-        localStorage.setItem("toggle", toggle)
-    }, [setToggle])
+    const { resumeId } = useParams();  // Fetch the resumeId from the URL
+    const { setResumeId } = useContext(ResumeIdContext);
+    const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
     useEffect(() => {
-        let data = localStorage.getItem("toggle")
-        setToggle(data.length > 2 && data)
-    }, [])
+        if (resumeId) {
+            setResumeId(resumeId);  // Store the resumeId in context
+            GetResumeInfo(resumeId);  // Fetch resume info using the ID
+        }
+    }, [resumeId]);
+
+    const GetResumeInfo = async (id) => {
+        try {
+            const response = await GlobleApi.GetResumeById(id);
+            setResumeInfo(response.data);  // Update resume info in context
+        } catch (error) {
+            console.error("Error fetching resume data:", error.message);
+        }
+    };
 
     return (
-        <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-            <TogglePreview.Provider value={{ isClicked, setIsClicked }}>
-                <ToggleExperience.Provider value={{ toggle, setToggle }}>
+        <div className='w-full'>
+            <div className={`flex justify-between mb-10 mt-3`}>
+                <div className={`md:w-1/2 w-full `}>
+                    <FormSection resumeId={resumeId} />
+                </div>
+                <div className={`md:w-1/2 w-full  md:block`}>
+                    <ResumePreview />
+                </div>
+            </div>
+        </div>
+    );
+};
 
-                    {/* {console.log(isClicked)} */}
-                    <div className='w-full'>
-                        <div className={`flex justify-between mb-10 mt-3`}>
-                            <div className={`md:w-1/2 w-full ${isClicked && "hidden"}`}>
-                                <FormSection resumeId={resumeId} />
-                            </div>
-                            <div className={`md:w-1/2 w-full ${isClicked ? "absolute left-0" : "static"} md:block`}>
-                                <ResumePreview />
-                            </div>
-                        </div>
-                    </div>
-                </ToggleExperience.Provider>
-            </TogglePreview.Provider>
-        </ResumeInfoContext.Provider>
-    )
-}
-
-export default EditResume
+export default EditResume;

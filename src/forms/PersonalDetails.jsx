@@ -1,132 +1,131 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ResumeInfoContext } from '../context/ResumeInfoContext';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { LoaderCircleIcon, SaveIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import GlobleApi from '../service/GlobleApi';
-import { toast, Toaster } from 'sonner';
-import PreviewBtn from '../dashbord/resume/[resumeId]/edit/PreviewBtn';
+import { toast } from 'sonner';
 
 const PersonalDetails = ({ setEnableNext }) => {
     let { resumeId } = useParams(); // Destructure resumeId
-    const [formData, setFormData] = useState({});
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+    const [formData, setFormData] = useState(resumeInfo || {}); // Initialize with resumeInfo
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        // Set formData with resumeInfo when the component mounts or refocuses
+        setFormData(resumeInfo);
+    }, [resumeInfo]);
 
-    function PersonalDetail(target) {
+    const handleInputChange = (e) => {
         setEnableNext(false);
-        let { name, value } = target;
+        const { name, value } = e.target;
 
-        setFormData({ ...formData, [name]: value });
-        setResumeInfo({ ...resumeInfo, [name]: value });
-    }
+        // Update both formData and context with new values
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+        setResumeInfo((prevResumeInfo) => ({
+            ...prevResumeInfo,
+            [name]: value,
+        }));
+    };
 
     const onSave = (e) => {
-        setIsLoading(true);
         e.preventDefault();
+        setIsLoading(true);
+
         const data = {
-            data: formData,  // Wrapping the formData in a 'data' object
+            data: formData, // Wrapping the formData in a 'data' object
         };
 
-        // setResumeInfo({...resumeInfo,...formData })
         GlobleApi.UpdateResumeDetail(resumeId, data)
-            .then(
-                (resp) => {
-
-                    setIsLoading(false);
-                    setEnableNext(true);
-                    toast("✅ Details updated");
-                    // setResumeInfo(resp.data.attributes)
-                    // console.log(resp.data.attributes);
-                },
-                (error) => {
-                    console.log(resp);
-                    setIsLoading(false);
-                    setEnableNext(true);
-                    toast("👽 Error updating resume:", error);
-
-                }
-            );
+            .then((resp) => {
+                setIsLoading(false);
+                setEnableNext(true);
+                toast.success("Details updated successfully");
+                setResumeInfo((prevInfo) =>
+                    Array.isArray(prevInfo) ? [...prevInfo] : data.data
+                );
+            })
+            .catch((error) => {
+                console.error("Error updating resume:", error);
+                setIsLoading(false);
+                setEnableNext(true);
+                toast.error("Error updating resume");
+            });
     };
-    // console.log("Resume ID:", resumeId);
-
 
     return (
         <div className='shadow-lg w-[95vw] overflow-hidden md:w-auto md:p-5 p-3 border-t-purple-500 border-t-4 mt-10 rounded-2xl'>
-            
             <h2 className='font-bold text-lg'>Personal Details</h2>
             <h2 className='font-medium'>Get Started with the basic information</h2>
-            <div className=''>
 
-            
-            </div>
             <form onSubmit={onSave}>
                 <div className='grid grid-cols-2 gap-3 mt-5'>
                     <div>
                         <label className='text-sm font-semibold' htmlFor="fName">First Name:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="firstName"
                             required
-                            defaultValue={resumeInfo?.firstName}
-                            placeholder="Ex : Shubham"
+                            value={formData?.firstName || ""}
+                            placeholder="Ex: Shubham"
                         />
                     </div>
                     <div>
                         <label className='text-sm font-semibold' htmlFor="lName">Last Name:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="lastName"
                             required
-                            defaultValue={resumeInfo?.lastName}
-                            placeholder="Ex : Thakur"
+                            value={formData?.lastName || ""}
+                            placeholder="Ex: Thakur"
                         />
                     </div>
                     <div className='col-span-2'>
                         <label className='text-sm font-semibold' htmlFor="jobTitle">Job Title:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="jobTitle"
                             required
-                            defaultValue={resumeInfo?.jobTitle}
-                            placeholder="Ex : Front End Developer"
+                            value={formData?.jobTitle || ""}
+                            placeholder="Ex: Front End Developer"
                         />
                     </div>
                     <div className='col-span-2'>
                         <label className='text-sm font-semibold' htmlFor="address">Address:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="address"
                             required
-                            defaultValue={resumeInfo?.address}
-                            placeholder="Ex : Himachal Pradesh, Sirmour, India"
+                            value={formData?.address || ""}
+                            placeholder="Ex: Himachal Pradesh, Sirmour, India"
                         />
                     </div>
                     <div>
-                        <label className='text-sm font-semibold' htmlFor="phone">Phone no:</label>
+                        <label className='text-sm font-semibold' htmlFor="phone">Phone No:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="phone"
                             required
                             type="phone"
                             maxLength={10}
-                            placeholder="Ex : 78XXXXXXXX"
-                            defaultValue={resumeInfo?.phone}
-
+                            value={formData?.phone || ""}
+                            placeholder="Ex: 78XXXXXXXX"
                         />
-                        <input type="text " />
                     </div>
                     <div>
                         <label className='text-sm font-semibold' htmlFor="email">Email:</label>
                         <Input
-                            onChange={(e) => PersonalDetail(e.target)}
+                            onChange={handleInputChange}
                             name="email"
                             required
                             type="email"
+                            value={formData?.email || ""}
                             placeholder="example@gmail.com"
-                            defaultValue={resumeInfo?.email}
                         />
                     </div>
 

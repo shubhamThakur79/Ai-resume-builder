@@ -7,7 +7,7 @@ import Experience from '../../../forms/Experience'
 import Education from '../../../forms/Education'
 import Skills from '../../../forms/Skills'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import ViewResume from '../../../my-Resume/[resumeId]/view'
+// import ViewResume from '../../../my-Resume/[resumeId]/view'
 import PreviewBtn from '../[resumeId]/edit/PreviewBtn'
 import ThemeColor from './ThemeColor'
 import Projects from '../../../forms/Projects'
@@ -70,11 +70,12 @@ const FormSection = () => {
 
         {/* Professional experience form*/}
 
-        {activeIndex === 3 && toggle ? <Projects setEnableNext={(v) => setEnableNext(v)} /> : !toggle  && <Experience setEnableNext={(v) => setEnableNext(v)} />}
+        {activeIndex === 3 &&  <Projects setEnableNext={(v) => setEnableNext(v)} />  }
 
         {/* Education  form*/}
         {activeIndex === 4 && <Education setEnableNext={(v) => setEnableNext(v)} />}
 
+        {/* && <Experience setEnableNext={(v) => setEnableNext(v)} /> */}
         {/* Skill form */}
         {activeIndex === 5 && <Skills setEnableNext={(v) => setEnableNext(v)} />}
 
