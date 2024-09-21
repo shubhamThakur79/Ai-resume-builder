@@ -7,6 +7,7 @@ import { RWebShare } from 'react-web-share'
 import { FaShare } from 'react-icons/fa6'
 import { useParams } from 'react-router-dom'
 // import { Button } from "@/components/ui/Button";
+import html2pdf from 'html2pdf.js'; 
 
 const PreviewBtn = () => {
     const { isClicked, setIsClicked } = useContext(TogglePreview)
