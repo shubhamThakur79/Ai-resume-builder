@@ -4,7 +4,7 @@ import Header from "./custom/Header"
 import { Toaster } from "./components/ui/sonner"
 import { ResumeIdContext, ResumeInfoContext, ToggleExperience, TogglePreview } from "./context/ResumeInfoContext"
 import { useState } from "react"
-import Hero from "../hero"
+import Hero from "./Hero"
 
 
 export default function App() {

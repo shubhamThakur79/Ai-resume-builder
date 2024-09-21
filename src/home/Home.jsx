@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../custom/Header'
-import Hero from '../../hero'
-import HeroSection from '../../hero'
+import Hero from '../Hero'
+import HeroSection from '../Hero'
 
 const Home = () => {
 
@@ -9,7 +9,7 @@ const Home = () => {
     <>
 
       <Header />
-      <div className='h-screen text-black'>
+      <div className='h-screen  '>
         <Hero />
       </div>
     </>
