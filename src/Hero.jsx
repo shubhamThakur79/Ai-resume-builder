@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
     return (
-        <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white overflow-hidden">
+        <section className="w-full flex justify-center pb-12 pt-16 md:pb-24 lg:pb-32 xl:pb-48 bg-black text-white overflow-hidden">
             <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                     <motion.div
