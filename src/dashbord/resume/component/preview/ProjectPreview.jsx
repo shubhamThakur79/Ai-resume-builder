@@ -6,7 +6,7 @@ const ProjectPreview = ({ resumeInfo }) => {
     const { toggle } = useContext(ToggleExperience);
 
     return (
-        <div className={`w-[95vw] md:w-auto overflow-hidden `}>
+        <div className={` `}>
             <h1 style={{ color: resumeInfo?.themeColor }} className='font-semibold text-xl mt-3'>Projects</h1>
             <hr style={{ borderColor: resumeInfo?.themeColor }} className='border mt-2 mb-2' />
             {projects.length ? (

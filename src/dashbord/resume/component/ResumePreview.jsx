@@ -53,7 +53,7 @@ const ResumePreview = () => {
       {/* Skill Preview */}
       <SkillPreview resumeInfo={resumeInfo} />
 
-      <div className="fixed bottom-2 right-1 z-40">
+      <div id='no-print' className="fixed bottom-2 right-1 z-40">
         <Back />
       </div>
     </div>
