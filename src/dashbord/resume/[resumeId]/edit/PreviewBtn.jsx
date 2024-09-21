@@ -82,7 +82,7 @@ const Back = () => {
 
 
         
-           {isClicked &&<div className='block md:hidden  ' id="no-print">
+           {isClicked &&<div id={"no-print"} className='block md:hidden  ' >
 
 
 
