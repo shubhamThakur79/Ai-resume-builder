@@ -61,7 +61,7 @@ const Header = () => {
     
 
     return (
-        <div id='no-print' className='flex w-[100vw] justify-between shadow-md md:py-4 py-3 px-4 md:px-8'>
+        <div id='no-print' className='flex w-[100vw] h-[70px] justify-between shadow-md md:py-4 py-3 px-4 md:px-8'>
             <Link to="/" className=''>
                 <img className='w-[55px] object-cover md:w-[60px]' src="https://img.freepik.com/premium-photo/colorful-bird-with-colorful-wings-is-shown-white-background_259293-24603.jpg?size=626&ext=jpg&ga=GA1.1.785720697.1706798610&semt=ais_hybrid" alt="" />
             </Link>
