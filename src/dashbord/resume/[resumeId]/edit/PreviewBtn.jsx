@@ -33,12 +33,49 @@ const Back = () => {
 
 
 
-    function download() {
-        setIsLoading(true)
-        window.print()
-
-        setIsLoading(false)
-    }
+    const generatePDF = () => {
+        setIsLoading(true);
+    
+        // Ensure the element exists before generating the PDF
+        const resumeElement = document.getElementById("print-area");
+        if (!resumeElement) {
+            console.error("No element found with the ID 'print-area'");
+            setIsLoading(false);
+            return;
+        }
+    
+        // CSS for full-page content for PDF
+        const originalStyles = document.body.style.cssText; // Save original styles
+        document.body.style.cssText = "height: auto !important; width: 100vw !important; margin: auto; padding: auto;"; // Ensure content fits on the page
+    
+        // Options for html2pdf
+        const options = {
+            margin: [0, 0, 0, 0],  // Set no margin for full-page coverage
+            filename: `${resumeInfo?.firstName || "Unknown"}_${resumeInfo?.lastName || "User"}_Resume.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 3, useCORS: true },  // Increase the scale for higher quality
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } // Set PDF to A4 size
+        };
+    
+        console.log("Generating full-page PDF...");
+    
+        // Generate PDF
+        html2pdf()
+            .set(options)
+            .from(resumeElement)
+            .save()
+            .then(() => {
+                console.log("PDF generated successfully!");
+            })
+            .catch((error) => {
+                console.error("Error generating PDF:", error);
+            })
+            .finally(() => {
+                // Restore original styles after generating PDF
+                document.body.style.cssText = originalStyles;
+                setIsLoading(false);
+            });
+    };
     return (
 <>
 
@@ -51,7 +88,7 @@ const Back = () => {
    <div className='flex justify-start w-full  relative'>
 
         <div className={"w-full flex justify-start gap-4 mr-5"}>
-            <Button onClick={download} disabled={isLoading} className="flex gap-[6px] items-center bg-[#BE185D]">{isLoading ? <LoaderCircle className='animate-spin' /> : <DownloadCloud />} Download</Button>
+            <Button onClick={generatePDF} disabled={isLoading} className="flex gap-[6px] items-center bg-[#BE185D]">{isLoading ? <LoaderCircle className='animate-spin' /> : <DownloadCloud />} Download</Button>
 
             {/* share logic */}
             <RWebShare
