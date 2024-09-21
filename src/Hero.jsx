@@ -46,7 +46,7 @@ export default function Hero() {
                                     Build Your Resume Now
                                 </Button>
                             </Link>
-                            <Link to={"/dashbord"}>
+                            <Link to={"/auth/sign-in"}>
                                 <Button size="lg" className="bg-white text-black hover:bg-gray-200 w-full sm:w-auto">
                                     <User className="mr-2 h-5 w-5" />
                                     Sign up
