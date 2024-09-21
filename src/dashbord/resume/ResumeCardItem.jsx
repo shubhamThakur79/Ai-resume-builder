@@ -77,8 +77,7 @@ const ResumeCardItem = ({ resume, index, refreshData }) => {
                         <DropdownMenuTrigger><MoreVertical className='h-4 w-4 cursor-pointer' /></DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuItem onClick={() => navigate(`/dashbord/resume/${resume.id}/edit`)}>Edit</DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => navigate(`/my-resume/${resume.id}/view`)}>Download</DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => navigate(`/my-resume/${resume.id}/view`)}>View</DropdownMenuItem>
+  
                             <DropdownMenuItem onClick={() => setOpenAlert(true)}>Delete</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>

@@ -31,6 +31,7 @@ const Summery = ({ setEnableNext }) => {
         const aiText = await result?.response?.text() || ""; // Get AI-generated text
         updateFormData('summary', aiText); // Update both formData and context
         setIsLoading(false);
+        setEnableNext(true)
     };
 
     const onSave = (e) => {
@@ -43,6 +44,8 @@ const Summery = ({ setEnableNext }) => {
                 setIsLoading(false);
                 setEnableNext(true); // Enable the next button
                 toast("✅ Details updated");
+                setEnableNext(true)
+
             })
             .catch((error) => {
                 setIsLoading(false);

@@ -27,7 +27,7 @@ const ResumePreview = () => {
     setIsLoading(false)
 }
   return (
-    <div
+    <div id="print-area" 
       style={{
         borderTopWidth: "25px",
         borderTopStyle: "solid",
@@ -43,13 +43,13 @@ const ResumePreview = () => {
       <SummeryPreview resumeInfo={resumeInfo} />
 
       {/* Experience or Project Preview based on toggle */}
-      <div>
-        <ProjectPreview resumeInfo={resumeInfo} /> 
-      </div>
 
       {/* Education Preview */}
       <EducationPreview resumeInfo={resumeInfo} />
 
+      <div>
+        <ProjectPreview resumeInfo={resumeInfo} /> 
+      </div>
       {/* Skill Preview */}
       <SkillPreview resumeInfo={resumeInfo} />
 

@@ -35,7 +35,7 @@
     box-sizing: border-box;
     /* color: #272626c0; */
   }
-  #skill {
+  /* #skill {
  
  width: max-content; 
  display: flex;
@@ -47,7 +47,7 @@ align-items: center;
 text-align: start; 
 /* background-color: rebeccapurple; */
 
-  }
+  /* } */ */
   #data{
     width: 30%;
   margin: auto;

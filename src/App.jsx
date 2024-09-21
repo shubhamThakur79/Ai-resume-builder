@@ -4,6 +4,7 @@ import Header from "./custom/Header"
 import { Toaster } from "./components/ui/sonner"
 import { ResumeIdContext, ResumeInfoContext, ToggleExperience, TogglePreview } from "./context/ResumeInfoContext"
 import { useState } from "react"
+import Hero from "../hero"
 
 
 export default function App() {
@@ -21,8 +22,10 @@ export default function App() {
             <ResumeIdContext.Provider value={{ resumeId, setResumeId }} >
 
               <Header />
+            
               <Toaster />
               <Outlet />
+          
             </ResumeIdContext.Provider>
           </ToggleExperience.Provider>
         </TogglePreview.Provider>

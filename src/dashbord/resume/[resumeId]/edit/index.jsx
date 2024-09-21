@@ -30,10 +30,10 @@ const EditResume = () => {
     return (
         <div className='w-full'>
             <div className={`flex justify-between mb-10 mt-3`}>
-                <div id="no-print" className={`md:w-1/2 w-full md:block ${isClicked ? "hidden " : "block"} `}>
+                <div id="no-print" className={`md:w-1/2 w-[100vw] overflow-hidden md:block ${isClicked ? "hidden " : "block"} `}>
                     <FormSection resumeId={resumeId} />
                 </div>
-                <div className={`md:w-1/2 w-full  md:block`}>
+                <div className={`md:w-1/2 w-full  md:block ${isClicked ? "block " : "hidden"}`}>
                     <ResumePreview />
                 </div>
             </div>

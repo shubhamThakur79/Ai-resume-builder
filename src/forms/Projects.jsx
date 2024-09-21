@@ -144,14 +144,20 @@ const Projects = ({ setEnableNext }) => {
                                     placeholder="Describe your project"
                                 />
                             </div>
-                            <div className='flex justify-end col-span-2 mt-3'>
+                            <div className='flex justify-end col-span-2 mt-3 gap-4'>
                                 {index > 0 && (
                                     <Button onClick={() => RemoveProject(index)} className="flex bg-red-800 items-center">
                                         <FiDelete className='mr-1' size={"20px"} /> Remove
                                     </Button>
                                 )}
-                                <Button onClick={AddNewProject} className="flex items-center">
+                                <div className='md:block hidden'>
+
+                                <Button onClick={AddNewProject} className="flex  items-center">
                                     <PlusIcon size={"20px"} className='mr-1' /> Add New Project
+                                </Button>
+                                </div>
+                                <Button onClick={AddNewProject} className="flex md:hidden items-center">
+                                    <PlusIcon size={"20px"} className='mr-1' /> Add New
                                 </Button>
                                 <Button onClick={onSave} className="bg-purple-600 flex items-center gap-1" disabled={isLoading}>
                                     {isLoading ? <LoaderCircleIcon className='animate-spin' /> : <SaveIcon size={"20px"} />}

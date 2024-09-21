@@ -160,15 +160,21 @@ const Education = ({ setEnableNext }) => {
                                     name="summary"
                                     placeholder="Add Summary related to degree"
                                     rows={5}
-                                    defaultValue={item.summary || ""}
+                                    defaultValue={item?.summary || ""}
                                 />
                             </div>
-                            <div className='flex md:justify-end gap-3 justify-end col-span-2 mt-3'>
+                            <div className='flex md:justify-end gap-2 md:gap-3 justify-end col-span-2 mt-3'>
                                 <Button onClick={() => RemoveEducation(index)} className="flex bg-red-800 items-center">
                                     <FiDelete className='mr-1' size={"20px"} /> Remove
                                 </Button>
-                                <Button onClick={AddNewEducation} className="flex items-center">
+                                <div className='hidden md:block'>
+
+                                <Button onClick={AddNewEducation} className="flex  items-center">
                                     <PlusIcon size={"20px"} className='mr-1' /> Add New Education
+                                </Button>
+                                </div>
+                                <Button onClick={AddNewEducation} className="flex  md:hidden items-center">
+                                    <PlusIcon size={"20px"} className='mr-1' /> Add New
                                 </Button>
                                 <Button type="submit" onClick={onSave} className="bg-purple-600 flex items-center gap-1" disabled={isLoading}>
                                     {isLoading ? <LoaderCircleIcon className='animate-spin' /> : <SaveIcon size={"20px"} />}

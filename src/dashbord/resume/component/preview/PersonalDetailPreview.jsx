@@ -16,14 +16,14 @@ const PersonalDetailPreview = ({ resumeInfo }) => {
 
       </h5>
       <div style={{ color: resumeInfo?.themeColor }} className='flex flex-wrap  items-center font-semibold justify-between md:justify-evenly mt-2 text-sm'>
-        <h1 className={"flex line-clam-1 items-center gap-[1px] md:gap-[2px]"}><MdLocationPin size={"20px"} className='text-xs' style={{ color: resumeInfo?.themeColor }} /><span className='block md:hidden'>{resumeInfo?.address} </span><span className='hidden md:block'>{resumeInfo?.address} </span></h1>
+        <h1 className={"flex line-clam-1 items-center  gap-[1px] md:gap-[2px]"}><span className='block md:hidden'>{resumeInfo?.address} </span><span className='hidden md:block'>{resumeInfo?.address} </span></h1>
         <Link to={`tel:${resumeInfo?.phone}`}>
-          <h1 className={"flex items-center gap-1 "}><FaPhoneVolume size={"14px"} className='text-xs' style={{ color: resumeInfo?.themeColor }} />{resumeInfo?.phone}</h1>
+          <h1 className={"flex items-center gap-1 "}>{resumeInfo?.phone}</h1>
 
         </Link>
         <Link to={`mailto:${resumeInfo?.email}`}>
 
-          <h1 className={"flex items-center gap-1 "}><MdMarkEmailUnread size={"17px"} className='text-xs' style={{ color: resumeInfo?.themeColor }} />{resumeInfo?.email}</h1>
+          <h1 className={"flex items-center gap-1 "}>{resumeInfo?.email}</h1>
         </Link>
 
       </div>

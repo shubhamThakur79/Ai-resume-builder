@@ -35,7 +35,7 @@ const ProjectPreview = ({ resumeInfo }) => {
                                     <span>{project.endDate ? project.endDate.substring(0, 4) : 'Present'}</span>
                                 </span>
                             </h3>
-                            <div className='text-sm mt-[-13px] break-words w-full h-max overflow-hidden'>
+                            <div className='text-sm mt-[-13px] mb-4 '>
                                 {project.description || null}
                             </div>
                         </li>
