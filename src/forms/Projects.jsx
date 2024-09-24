@@ -8,6 +8,7 @@ import { Textarea } from "../components/ui/textarea";
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import GlobleApi from '../service/GlobleApi';
+import { AIChatSession } from './../service/AiModel';
 
 const defaultProject = {
     title: "",
@@ -45,6 +46,32 @@ const Projects = ({ setEnableNext }) => {
         if (projectList.length === 1) return; // Prevent removing all entries
         const updatedProjects = projectList.filter((_, i) => i !== index);
         setProjectList(updatedProjects);
+    };
+
+    // AI-powered project description generation
+    const GenerateDescriptionFromAI = async (index) => {
+        setIsLoading(true);
+        const projectTitle = projectList[index].title;
+        if (!projectTitle) {
+            toast.error("Please add a project title first.");
+            setIsLoading(false);
+            return;
+        }
+
+        const prompt = `Based on the project title "${projectTitle}", generate a short description for my resume.  main points in details max to max 5 lines`;
+        try {
+            const result = await AIChatSession.sendMessage(prompt);
+            const aiDescription = await result?.response?.text() || "";
+            const updatedProjects = [...projectList];
+            updatedProjects[index] = { ...updatedProjects[index], description: aiDescription };
+            setProjectList(updatedProjects);
+            toast.success("AI-generated description added.");
+        } catch (error) {
+            console.error("Error generating project description:", error);
+            toast.error("Error generating project description.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     // Save project details to API
@@ -143,6 +170,13 @@ const Projects = ({ setEnableNext }) => {
                                     onChange={(e) => handleChange(index, e)}
                                     placeholder="Describe your project"
                                 />
+                                <Button
+                                    onClick={() => GenerateDescriptionFromAI(index)}
+                                    variant={'secondary'}
+                                    className="mt-2 text-[#8e2de9] border-[1px] border-[#a955f762] font-semibold flex items-center justify-center"
+                                >
+                                    <PlusIcon size={"20px"} className='mr-1' /> Generate Description from AI
+                                </Button>
                             </div>
                             <div className='flex justify-end col-span-2 mt-3 gap-4'>
                                 {index > 0 && (
@@ -150,14 +184,8 @@ const Projects = ({ setEnableNext }) => {
                                         <FiDelete className='mr-1' size={"20px"} /> Remove
                                     </Button>
                                 )}
-                                <div className='md:block hidden'>
-
-                                <Button onClick={AddNewProject} className="flex  items-center">
+                                <Button onClick={AddNewProject} className="flex items-center">
                                     <PlusIcon size={"20px"} className='mr-1' /> Add New Project
-                                </Button>
-                                </div>
-                                <Button onClick={AddNewProject} className="flex md:hidden items-center">
-                                    <PlusIcon size={"20px"} className='mr-1' /> Add New
                                 </Button>
                                 <Button onClick={onSave} className="bg-purple-600 flex items-center gap-1" disabled={isLoading}>
                                     {isLoading ? <LoaderCircleIcon className='animate-spin' /> : <SaveIcon size={"20px"} />}
